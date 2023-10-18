@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart2"></canvas>
+      </div>
+      <script type="module">
+        import dataJson from './data.json' assert { type: 'json' }
+
+const chartGenreComm = new Chart(
+  document.getElementById('myChart2'),
+  {
+    type: 'pie',
+    data: {
+      labels: [
+        'Homme',
+        'Femme'
+      ],
+      datasets: [{
+        label: 'Répartition des genres Parcours Communication',
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+        ],
+        hoverOffset: 4,
+        data: [dataJson.mmi2.comm.h, dataJson.mmi2.comm.f],
+      }]
+    },
+    options: {
+      plugins: {
+        title: {
+          text: 'Répartition des genres Parcours Communication',
+          display: true
+        }
+      }
+    }
+  }
+);
+        const myChart = new Chart(
+          document.getElementById('myChart'),
+          {
+          type: 'line',
+          data: {
+            labels: [
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+            ],
+            datasets: [{
+              label: 'My First dataset',
+              backgroundColor: 'rgb(0, 0, 255)',
+              borderColor: 'rgb(25, 125, 132)',
+              data: [10, 5, 2, 20, 30, 45],
+              tension: 0.2,
+            }]
+          },
+          options: {}
+        }
+        );
+      </script>
+</body>
+</html>
